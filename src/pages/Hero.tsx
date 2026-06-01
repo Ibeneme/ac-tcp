@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Layers, Sparkles, Mail } from "lucide-react";
 
 const Hero: React.FC = () => {
@@ -7,12 +7,15 @@ const Hero: React.FC = () => {
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = { // 2. Add the type here
     hidden: { opacity: 0, y: 15 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { 
+        duration: 0.5, 
+        ease: "easeOut" as const // 3. Add 'as const' to narrow the type
+      },
     },
   };
 
