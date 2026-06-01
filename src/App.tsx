@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import Navbar from "./pages/Navbar";
 import Hero from "./pages/Hero";
 import AboutPage from "./pages/AboutPage";
@@ -19,16 +19,16 @@ const App = () => {
           <>
             <Hero />
             <Carousel />
-            <AboutPage />;
-            <SelectedWorks />;
-            <FAQPage />;
+            <AboutPage />
+            <SelectedWorks />
+            <FAQPage />
           </>
         );
       case "about":
         return (
           <>
             <div style={{ paddingTop: 120 }}>
-              <AboutPage />; <FAQPage />;
+              <AboutPage /> <FAQPage />;
             </div>
           </>
         );

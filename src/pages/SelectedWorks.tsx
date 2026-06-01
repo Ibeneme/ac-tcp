@@ -6,6 +6,7 @@ import {
   Scale,
   FileText,
   Vote,
+  ArrowUpRight,
 } from "lucide-react";
 
 const projects = [
@@ -13,102 +14,100 @@ const projects = [
     name: "Pickars",
     type: "Logistics Platform",
     url: "https://www.pickars.com",
-    icon: <Truck className="w-6 h-6" />,
+    icon: Truck,
   },
   {
     name: "Boring Thinkers",
     type: "Digital Agency",
     url: "https://www.boringthinkers.com",
-    icon: <Palette className="w-6 h-6" />,
+    icon: Palette,
   },
   {
     name: "ChatWazobia AI",
     type: "Artificial Intelligence",
     url: "https://www.chatwazobiaai.com",
-    icon: <BrainCircuit className="w-6 h-6" />,
+    icon: BrainCircuit,
   },
   {
     name: "ZaedaOracle",
     type: "Legal Technology",
     url: "https://www.zaedaoracle.com",
-    icon: <Scale className="w-6 h-6" />,
+    icon: Scale,
   },
   {
     name: "CourtDox",
     type: "Legal Documentation",
     url: "https://www.courtdox.com",
-    icon: <FileText className="w-6 h-6" />,
+    icon: FileText,
   },
   {
     name: "Vote DaMarcus",
     type: "Electoral Campaign",
     url: "https://www.votedamarcus.com",
-    icon: <Vote className="w-6 h-6" />,
+    icon: Vote,
   },
 ];
 
 const SelectedWorks = () => {
   return (
-    <section className="py-28 px-6 bg-slate-950 font-['Rethink_Sans']">
-      <div className="max-w-4xl mx-auto">
+    <section className="py-24 px-6 bg-slate-950  font-['Rethink_Sans'] tracking-tight">
+      <div className="max-w-3xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-white mb-3">
+        <div className="mb-12">
+          <h2 className="text-3xl font-black text-white tracking-tighter mb-2">
             Selected Works
           </h2>
-          <p className="text-slate-400 text-lg">
-            Projects I've designed and built • 2025–2026
+          <p className="text-xs font-mono uppercase tracking-widest text-slate-500">
+            Design & Development &bull; 2025–2026
           </p>
         </div>
 
         {/* Projects Grid */}
-        <div className="grid gap-4">
-          {projects.map((project, i) => (
-            <motion.a
-              key={i}
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              whileHover={{ scale: 1.015, y: -4 }}
-              className="group relative flex items-center justify-between p-8 rounded-3xl border border-slate-800 bg-slate-900/30 hover:border-purple-500/40 hover:bg-slate-900/60 backdrop-blur-md transition-all duration-500"
-            >
-              <div className="flex items-center gap-6">
-                {/* Icon */}
-                <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-slate-950 border border-slate-700 text-purple-400 group-hover:bg-purple-500/10 group-hover:border-purple-500/30 transition-all duration-300">
-                  {project.icon}
+        <div className="divide-y divide-slate-900 border-y border-slate-900">
+          {projects.map((project, i) => {
+            const Icon = project.icon;
+            return (
+              <motion.a
+                key={i}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                className="group flex items-center justify-between py-5 hover:px-2 transition-all duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  {/* Icon */}
+                  <div className="w-9 h-9 flex items-center justify-center rounded-lg bg-zinc-950 border border-slate-900 text-slate-400 group-hover:text-purple-400 group-hover:border-purple-500/30 transition-colors">
+                    <Icon className="w-4 h-4" />
+                  </div>
+
+                  {/* Project Info */}
+                  <div>
+                    <h3 className="text-sm font-bold text-white group-hover:text-purple-400 transition-colors">
+                      {project.name}
+                    </h3>
+                    <p className="text-xs text-slate-500">{project.type}</p>
+                  </div>
                 </div>
 
-                {/* Project Info */}
-                <div>
-                  <h3 className="text-2xl font-bold text-white tracking-tight mb-1">
-                    {project.name}
-                  </h3>
-                  <p className="text-slate-400 text-sm font-medium">
-                    {project.type}
-                  </p>
+                {/* Right Side */}
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-slate-600 opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0 duration-300">
+                    Launch
+                  </span>
+                  <ArrowUpRight className="w-4 h-4 text-slate-600 group-hover:text-purple-400 transition-colors duration-300" />
                 </div>
-              </div>
-
-              {/* Right Side */}
-              <div className="flex items-center gap-3">
-                <div className="text-xs font-mono uppercase tracking-widest text-slate-500 group-hover:text-purple-400 transition-colors">
-                  Visit Site
-                </div>
-                <div className="w-8 h-8 flex items-center justify-center rounded-full border border-slate-700 group-hover:border-purple-500 text-slate-400 group-hover:text-purple-400 transition-all">
-                  ↗
-                </div>
-              </div>
-            </motion.a>
-          ))}
+              </motion.a>
+            );
+          })}
         </div>
 
         {/* Bottom Note */}
-        <p className="text-center text-slate-500 text-sm mt-12">
-          More projects available upon request
+        <p className="text-left text-[11px] font-mono text-slate-600 uppercase tracking-widest mt-8">
+          // More works available upon request.
         </p>
       </div>
     </section>
